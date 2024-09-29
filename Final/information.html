@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Information Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- CSS สำหรับปรับแต่งเพิ่มเติม -->
+    <style>
+        body {
+            background-color: #f8f9fa; /* สีพื้นหลังที่ดูสะอาดตา */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* ฟอนต์ที่อ่านง่าย */
+        }
+
+        h2 {
+            color: #343a40; /* สีหัวข้อ */
+        }
+
+        .form-control {
+            border-radius: 0.25rem;
+            border: 1px solid #ced4da;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* เปลี่ยนสีปุ่มเมื่อ hover */
+        }
+
+        .container {
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">บันทึกข้อมูลสุขภาพ</h2>
+    <form id="healthInfoForm" class="p-4 shadow rounded bg-light">
+        <div class="form-group">
+            <label for="fullName">ชื่อ-นามสกุล</label>
+            <input type="text" class="form-control" id="fullName" placeholder="กรอกชื่อ-นามสกุล" required>
+        </div>
+        <div class="form-group">
+            <label for="age">อายุ</label>
+            <input type="number" class="form-control" id="age" placeholder="กรอกอายุ" required>
+        </div>
+        <div class="form-group">
+            <label for="weight">น้ำหนัก (กิโลกรัม)</label>
+            <input type="number" class="form-control" id="weight" placeholder="กรอกน้ำหนัก" required>
+        </div>
+        <div class="form-group">
+            <label for="height">ส่วนสูง (เซนติเมตร)</label>
+            <input type="number" class="form-control" id="height" placeholder="กรอกส่วนสูง" required>
+        </div>
+        <div class="form-group">
+            <label for="symptoms">อาการที่พบ</label>
+            <textarea class="form-control" id="symptoms" rows="3" placeholder="กรอกอาการที่พบ" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="medicalHistory">ประวัติทางการแพทย์</label>
+            <textarea class="form-control" id="medicalHistory" rows="3" placeholder="กรอกประวัติทางการแพทย์"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">บันทึกข้อมูล</button>
+    </form>
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- JavaScript สำหรับการจัดการฟอร์ม -->
+<script>
+    $(document).ready(function () {
+        $('#healthInfoForm').on('submit', function (e) {
+            e.preventDefault(); // ป้องกันการรีเฟรชหน้า
+
+            const healthData = {
+                fullName: $('#fullName').val().trim(),
+                age: parseInt($('#age').val(), 10),
+                weight: parseFloat($('#weight').val()),
+                height: parseFloat($('#height').val()),
+                symptoms: $('#symptoms').val().trim(),
+                medicalHistory: $('#medicalHistory').val().trim()
+            };
+
+            // ตรวจสอบความถูกต้องของข้อมูล
+            if (!validateForm(healthData)) {
+                alert('กรุณากรอกข้อมูลให้ครบถ้วนและถูกต้อง');
+                return;
+            }
+
+            // ส่งข้อมูลไปยังเซิร์ฟเวอร์ด้วย AJAX
+            $.ajax({
+                url: 'save_health_data.php', // ไฟล์ PHP ที่จะจัดการบันทึกข้อมูล
+                type: 'POST',
+                data: healthData,
+                beforeSend: function () {
+                    $('#healthInfoForm button[type="submit"]').prop('disabled', true).text('กำลังบันทึก...');
+                },
+                success: function (response) {
+                    alert('ข้อมูลสุขภาพถูกบันทึกเรียบร้อย');
+                    $('#healthInfoForm')[0].reset(); // รีเซ็ตแบบฟอร์ม
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error:', error);
+                    alert('มีข้อผิดพลาดในการบันทึกข้อมูล กรุณาลองใหม่อีกครั้ง');
+                },
+                complete: function () {
+                    $('#healthInfoForm button[type="submit"]').prop('disabled', false).text('บันทึกข้อมูล');
+                }
+            });
+        });
+
+        // ฟังก์ชันตรวจสอบความถูกต้องของข้อมูล
+        function validateForm(data) {
+            return data.fullName && data.age > 0 && data.weight > 0 && data.height > 0 && data.symptoms;
+        }
+    });
+</script>
+</body>
+</html>

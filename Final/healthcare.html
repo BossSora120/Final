@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การดูแลสุขภาพ</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- CSS สำหรับการตกแต่งเพิ่มเติม -->
+    <style>
+        body {
+            background-color: #f4f7fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+
+        .btn-read-more {
+            background-color: #007bff;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-read-more:hover {
+            background-color: #0056b3;
+        }
+
+        /* ทำให้ภาพมีขนาดเท่ากัน */
+        .card-img-top {
+            height: 200px; /* ความสูงของภาพ */
+            object-fit: cover; /* ปรับขนาดภาพให้พอดีกับกรอบ */
+        }
+
+        /* ขนาดของภาพในโมดัล */
+        .modal-img {
+            width: 100%; /* ปรับขนาดภาพให้เต็มความกว้าง */
+            height: auto; /* ความสูงปรับตามสัดส่วน */
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>การดูแลสุขภาพ</h1>
+    <p>ข้อมูลและเคล็ดลับสำหรับการดูแลสุขภาพที่ดี</p>
+</div>
+
+<div class="container content">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="img/04.jpg" class="card-img-top" alt="สุขภาพทั่วไป">
+                <div class="card-body">
+                    <h5 class="card-title">การดูแลสุขภาพทั่วไป</h5>
+                    <p class="card-text">คำแนะนำเกี่ยวกับวิธีการดูแลสุขภาพเบื้องต้น เช่น การรับประทานอาหารที่มีประโยชน์ การออกกำลังกาย และการพักผ่อนอย่างเพียงพอ.</p>
+                    <a href="#" class="btn btn-read-more" data-toggle="modal" data-target="#generalHealthModal">อ่านเพิ่มเติม</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="img/05.jpg" class="card-img-top" alt="สุขภาพจิต">
+                <div class="card-body">
+                    <h5 class="card-title">การดูแลสุขภาพจิต</h5>
+                    <p class="card-text">วิธีการดูแลสุขภาพจิต รวมถึงเทคนิคการจัดการความเครียดและการสร้างสภาพแวดล้อมที่ส่งเสริมจิตใจที่ดี.</p>
+                    <a href="#" class="btn btn-read-more" data-toggle="modal" data-target="#mentalHealthModal">อ่านเพิ่มเติม</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="img/06.jpg" class="card-img-top" alt="โภชนาการ">
+                <div class="card-body">
+                    <h5 class="card-title">โภชนาการที่ดี</h5>
+                    <p class="card-text">การเลือกรับประทานอาหารที่มีประโยชน์ เพื่อเสริมสร้างสุขภาพที่ดี รวมถึงคำแนะนำเกี่ยวกับการเลือกอาหาร.</p>
+                    <a href="#" class="btn btn-read-more" data-toggle="modal" data-target="#nutritionModal">อ่านเพิ่มเติม</a>
+                </div>
+            </div>
+        </div>
+        <!-- แถวใหม่ที่เพิ่มเข้าไป -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="img/07.jpg" class="card-img-top" alt="การออกกำลังกายที่ดี">
+                <div class="card-body">
+                    <h5 class="card-title">การออกกำลังกายที่ดี</h5>
+                    <p class="card-text">ข้อมูลเกี่ยวกับการออกกำลังกายที่เหมาะสม และวิธีการเลือกกิจกรรมที่ดีต่อสุขภาพเพื่อเพิ่มความแข็งแรง.</p>
+                    <a href="#" class="btn btn-read-more" data-toggle="modal" data-target="#exerciseModal">อ่านเพิ่มเติม</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="img/08.jpg" class="card-img-top" alt="การตรวจสุขภาพประจำปี">
+                <div class="card-body">
+                    <h5 class="card-title">การตรวจสุขภาพประจำปี</h5>
+                    <p class="card-text">ความสำคัญของการตรวจสุขภาพประจำปีเพื่อการป้องกันโรคและการตรวจพบปัญหาสุขภาพแต่เนิ่นๆ.</p>
+                    <a href="#" class="btn btn-read-more" data-toggle="modal" data-target="#checkupModal">อ่านเพิ่มเติม</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="img/09.jpg" class="card-img-top" alt="การนอนหลับที่มีคุณภาพ">
+                <div class="card-body">
+                    <h5 class="card-title">การนอนหลับที่มีคุณภาพ</h5>
+                    <p class="card-text">เทคนิคการนอนหลับที่ดี เพื่อช่วยให้ร่างกายฟื้นฟูและทำงานได้อย่างมีประสิทธิภาพ.</p>
+                    <a href="#" class="btn btn-read-more" data-toggle="modal" data-target="#sleepModal">อ่านเพิ่มเติม</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modals สำหรับแสดงเนื้อหาเพิ่มเติม -->
+<!-- Modal การดูแลสุขภาพทั่วไป -->
+<div class="modal fade" id="generalHealthModal" tabindex="-1" aria-labelledby="generalHealthModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="generalHealthModalLabel">การดูแลสุขภาพทั่วไป</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="img/04.jpg" class="modal-img" alt="สุขภาพทั่วไป">
+                <p>ข้อมูลเกี่ยวกับการดูแลสุขภาพทั่วไป เช่น การออกกำลังกายที่เหมาะสม การเลือกอาหารที่มีประโยชน์ และการพักผ่อนให้เพียงพอ.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal การดูแลสุขภาพจิต -->
+<div class="modal fade" id="mentalHealthModal" tabindex="-1" aria-labelledby="mentalHealthModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mentalHealthModalLabel">การดูแลสุขภาพจิต</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="img/05.jpg" class="modal-img" alt="สุขภาพจิต">
+                <p>เคล็ดลับการดูแลสุขภาพจิต เช่น การฝึกสมาธิ การจัดการความเครียด และการสร้างสภาพแวดล้อมที่ดี.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal โภชนาการที่ดี -->
+<div class="modal fade" id="nutritionModal" tabindex="-1" aria-labelledby="nutritionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="nutritionModalLabel">โภชนาการที่ดี</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="img/06.jpg" class="modal-img" alt="โภชนาการที่ดี">
+                <p>คำแนะนำในการเลือกอาหารเพื่อสุขภาพ เช่น การรับประทานผักผลไม้ การหลีกเลี่ยงอาหารที่มีไขมันสูง และการดื่มน้ำให้เพียงพอ.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal การออกกำลังกายที่ดี -->
+<div class="modal fade" id="exerciseModal" tabindex="-1" aria-labelledby="exerciseModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exerciseModalLabel">การออกกำลังกายที่ดี</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="img/07.jpg" class="modal-img" alt="การออกกำลังกายที่ดี">
+                <p>เคล็ดลับเกี่ยวกับการออกกำลังกายที่เหมาะสม เช่น การเลือกรูปแบบการออกกำลังกายที่เหมาะสมกับร่างกาย และการกำหนดเป้าหมายเพื่อสุขภาพที่ดี.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal การตรวจสุขภาพประจำปี -->
+<div class="modal fade" id="checkupModal" tabindex="-1" aria-labelledby="checkupModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="checkupModalLabel">การตรวจสุขภาพประจำปี</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="img/08.jpg" class="modal-img" alt="การตรวจสุขภาพประจำปี">
+                <p>ความสำคัญของการตรวจสุขภาพประจำปีเพื่อการป้องกันโรคและการตรวจพบปัญหาสุขภาพแต่เนิ่นๆ.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal การนอนหลับที่มีคุณภาพ -->
+<div class="modal fade" id="sleepModal" tabindex="-1" aria-labelledby="sleepModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="sleepModalLabel">การนอนหลับที่มีคุณภาพ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="img/09.jpg" class="modal-img" alt="การนอนหลับที่มีคุณภาพ">
+                <p>เทคนิคการนอนหลับที่ดี เพื่อช่วยให้ร่างกายฟื้นฟูและทำงานได้อย่างมีประสิทธิภาพ.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery และ Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

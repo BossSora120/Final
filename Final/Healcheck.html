@@ -1,0 +1,228 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตรวจข้อมูลสุขภาพ</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;500&display=swap');
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+
+        h1 {
+            margin: 0;
+            text-align: center;
+        }
+
+        section {
+            margin: 20px 0;
+        }
+
+        h2 {
+            color: #007bff;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: 500;
+        }
+
+        input,
+        select {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            grid-column: span 2;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <header>
+            <h1>ตรวจข้อมูลสุขภาพ</h1>
+        </header>
+        <form id="healthForm">
+            <!-- ประวัติสุขภาพส่วนตัว -->
+            <section>
+                <h2>ประวัติสุขภาพส่วนตัว</h2>
+                <div class="form-group">
+                    <label for="chronicDiseases">โรคประจำตัว:</label>
+                    <input type="text" id="chronicDiseases" name="chronicDiseases" placeholder="เช่น เบาหวาน, ความดันโลหิตสูง">
+                </div>
+                <div class="form-group">
+                    <label for="surgeryHistory">ประวัติการผ่าตัดหรือการรักษาในอดีต:</label>
+                    <input type="text" id="surgeryHistory" name="surgeryHistory" placeholder="ระบุรายละเอียดการผ่าตัดหรือการรักษาที่สำคัญ">
+                </div>
+            </section>
+
+            <!-- ประวัติสุขภาพครอบครัว -->
+            <section>
+                <h2>ประวัติสุขภาพครอบครัว</h2>
+                <div class="form-group">
+                    <label for="familyDiseases">โรคที่มีในครอบครัว:</label>
+                    <input type="text" id="familyDiseases" name="familyDiseases" placeholder="เช่น โรคหัวใจ, มะเร็ง">
+                </div>
+                <div class="form-group">
+                    <label for="familyAge">อายุตายของสมาชิกในครอบครัว:</label>
+                    <input type="text" id="familyAge" name="familyAge" placeholder="ระบุอายุและโรคที่ทำให้เสียชีวิต (ถ้ามี)">
+                </div>
+            </section>
+
+            <!-- พฤติกรรมการใช้ชีวิต -->
+            <section>
+                <h2>พฤติกรรมการใช้ชีวิต</h2>
+                <div class="form-group">
+                    <label for="alcoholUsage">การดื่มแอลกอฮอล์ (บ่อยเพียงใด?):</label>
+                    <input type="text" id="alcoholUsage" name="alcoholUsage" placeholder="เช่น ดื่ม 1-2 ครั้งต่อสัปดาห์">
+                </div>
+                <div class="form-group">
+                    <label for="sleepHabits">พฤติกรรมการนอน:</label>
+                    <input type="text" id="sleepHabits" name="sleepHabits" placeholder="เช่น นอนหลับ 7-8 ชั่วโมงต่อวัน">
+                </div>
+            </section>
+
+            <!-- การออกกำลังกาย -->
+            <section>
+                <h2>การออกกำลังกาย</h2>
+                <div class="form-group">
+                    <label for="exerciseType">ประเภทของการออกกำลังกาย:</label>
+                    <input type="text" id="exerciseType" name="exerciseType" placeholder="เช่น วิ่ง, ว่ายน้ำ, ยกน้ำหนัก">
+                </div>
+                <div class="form-group">
+                    <label for="exerciseFrequency">ระยะเวลาและความถี่ของการออกกำลังกาย:</label>
+                    <input type="text" id="exerciseFrequency" name="exerciseFrequency" placeholder="เช่น 30 นาที, 3 ครั้งต่อสัปดาห์">
+                </div>
+            </section>
+
+            <!-- อาการและอาการข้างเคียง -->
+            <section>
+                <h2>อาการและอาการข้างเคียง</h2>
+                <div class="form-group">
+                    <label for="frequentSymptoms">อาการที่เกิดขึ้นบ่อย:</label>
+                    <input type="text" id="frequentSymptoms" name="frequentSymptoms" placeholder="ระบุอาการที่คุณมีบ่อยๆ">
+                </div>
+                <div class="form-group">
+                    <label for="mentalHealth">ความเครียดและสุขภาพจิต:</label>
+                    <input type="text" id="mentalHealth" name="mentalHealth" placeholder="ระบุความเครียดหรือปัญหาสุขภาพจิตที่พบ">
+                </div>
+            </section>
+
+            <!-- ข้อมูลโภชนาการ -->
+            <section>
+                <h2>ข้อมูลโภชนาการ</h2>
+                <div class="form-group">
+                    <label for="vegetableIntake">ความถี่ในการรับประทานผักและผลไม้:</label>
+                    <input type="text" id="vegetableIntake" name="vegetableIntake" placeholder="เช่น รับประทานผักและผลไม้ทุกวัน">
+                </div>
+                <div class="form-group">
+                    <label for="fastFoodIntake">ปริมาณการบริโภคอาหารฟาสต์ฟู้ด:</label>
+                    <input type="text" id="fastFoodIntake" name="fastFoodIntake" placeholder="เช่น ทาน 1-2 ครั้งต่อสัปดาห์">
+                </div>
+            </section>
+
+            <!-- ประวัติการรักษา -->
+            <section>
+                <h2>ประวัติการรักษา</h2>
+                <div class="form-group">
+                    <label for="previousTreatment">ประวัติการรักษาหรือใช้ยาที่สำคัญ:</label>
+                    <input type="text" id="previousTreatment" name="previousTreatment" placeholder="ระบุการรักษาหรือการใช้ยา">
+                </div>
+            </section>
+
+            <button type="submit">ส่งข้อมูล</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('healthForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // ดึงค่าจาก input fields
+            const formData = new FormData(event.target);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // แปลงข้อมูลเป็น URL parameter สำหรับส่งไปที่หน้า recommendation.html
+            const queryString = new URLSearchParams(data).toString();
+            window.location.href = `recommendation.html?${queryString}`;
+        });
+    </script>
+
+</body>
+
+</html>

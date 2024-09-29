@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boss Hospital - ระบบพยากรณ์โรคในผู้ป่วย</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style1.css">
+
+    <!-- Material Symbols Icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Dark Mode Script -->
+    <script src="script1.js" defer></script>
+    <style>
+        .sub-menu {
+            display: none;
+            padding-left: 20px; /* เว้นระยะห่างสำหรับเมนูย่อย */
+        }
+
+        #historyTab {
+            background-color: #e2e3e5; /* สีพื้นหลังเฉพาะ */
+        }
+
+        #historyTab:hover {
+            background-color: #d1d3e2; /* สีพื้นหลังเมื่อเมาส์ชี้ */
+        }
+
+        #infoTab {
+            background-color: #e2e3e5; /* สีพื้นหลังเฉพาะ */
+        }
+
+        #infoTab:hover {
+            background-color: #d1d3e2; /* สีพื้นหลังเมื่อเมาส์ชี้ */
+        }
+    </style>
+</head>
+
+<body>
+    <header class="d-flex justify-content-start align-items-center p-3 bg-navy">
+        <div class="d-flex align-items-center">
+            <img src="img/Boss.png" alt="Logo" class="logo" style="height: 100px; width: auto; margin-right: 20px;">
+            <h1 class="text-white">Boss Hospital</h1>
+        </div>
+    </header>
+
+    <nav class="d-flex flex-column vh-100 bg-light position-fixed p-3" style="width: 250px;">
+        <ul class="nav flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link py-3 text-dark tab-bg" onclick="toggleSubMenu('history')">
+                    <span class="material-symbols-outlined"></span> ซักประวัติ
+                </a>
+                <ul class="sub-menu" id="history">
+                    <li><a href="Healcheck.html" class="nav-link text-dark">ตรวจข้อมูลสุขภาพ</a></li>
+                    <li><a href="index.html" class="nav-link text-dark">ประเมินความเสี่ยง</a></li>
+                    <li><a href="recommendation.html" class="nav-link text-dark">คำแนะนำเพิ่มเติม</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link py-3 text-dark tab-bg" onclick="toggleSubMenu('healCare')">
+                    <span class="material-symbols-outlined"></span> ศูนย์สุขภาพ
+                </a>
+                <ul class="sub-menu" id="healCare">
+                    <li><a href="information.html" class="nav-link text-dark">ข้อมูลสุขภาพ</a></li>
+                    <li><a href="healthcare.html" class="nav-link text-dark">การดูแลสุขภาพ</a></li>
+                    <li><a href="#" class="nav-link text-dark">คำแนะนำทั่วไป</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link py-3 text-dark tab-bg" onclick="toggleSubMenu('info')">
+                    <span class="material-symbols-outlined"></span> ข้อมูลเพิ่มเติม
+                </a>
+                <ul class="sub-menu" id="info">
+                    <li><a href="https://www.facebook.com/sorawit.techaudomtrap.1?mibextid=ZbWKwL" class="nav-link text-dark">เกี่ยวกับเรา</a></li>
+                    <li><a href="https://www.facebook.com/sorawit.techaudomtrap.1?mibextid=ZbWKwL" class="nav-link text-dark">ติดต่อเรา</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    
+    
+    <main class="p-4" style="margin-left: 250px;">
+        <section name="Showcase">
+            <!-- Showcase Cards -->
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <a class="btn p-0 m-0" data-bs-toggle="modal" data-bs-target="#01Image">
+                            <img src="img/01.jpg" class="card-img-top img-fixed-size" alt="Volunteer cadet">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">ประวัติการก่อตั้ง</h5>
+                            <p class="card-text">
+                                Boss Hospital ก่อตั้งโดยนายสรวิชญ์ เตชะอุดมทรัพย์ ซึ่งปัจจุบันเป็นประธานและผู้อำการของโรงพยาบาล โดยโรงพยาบาลถูกสร้างขึ้นเมื่อวันที่ 4 กันยายน 2020
+                                ปัจจุบันโรงพยาบาลแห่งนี้ มีเครื่องมือแพทย์ที่ทันสมัยมากที่สุด
+                            </p>
+                            <span class="badge text-bg-secondary">Boss Hospital</span>
+                            <span class="badge text-bg-secondary">แพทย์</span>
+                            <span class="badge text-bg-secondary">แผนกดูแลสุขภาพ</span>
+                        </div>
+                        <div class="card-footer text-muted">
+                            2020
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <a class="btn p-0 m-0" data-bs-toggle="modal" data-bs-target="#02Image">
+                            <img src="img/02.png" class="card-img-top img-fixed-size" alt="Speech Contest">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">มูลนิธิ Heal & Care</h5>
+                            <p class="card-text">
+                                ก่อตั้งโดยนายสรวิชญ์ เตชะอุดมทรัพย์ เมื่อวันที่25 กันยายน 2022 โดยมีวัตถุประสงศ์หลักคือการช่วยเหลือผู้ยากไร้ ที่ไม่สามารถจ่ายค่ารักษาที่สูงจนเกินไป
+                                และยังค่อยช่วยเหลือผู้ที่ประสบภัยต่างๆ 
+                            </p>
+                            <span class="badge text-bg-secondary">มูลนิธิ Heal & Care</span>
+                            <span class="badge text-bg-secondary">ผู้ประสบภัย</span>
+                            <span class="badge text-bg-secondary">ผู้ยากไร้</span>
+                        </div>
+                        <div class="card-footer text-muted">
+                            2022
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <a class="btn p-0 m-0" data-bs-toggle="modal" data-bs-target="#03Image">
+                            <img src="img/03.jpg" class="card-img-top img-fixed-size" alt="Influencer">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Boss Hospital</h5>
+                            <p class="card-text">
+                                โรงพยาบาลที่ดีที่สุดในประเทศไทย มีแผนกรักษาโรคต่างๆมากกว่า20แผนก โดยแต่ละแผนกมีหมอเฉพาะทางที่มากประสบการณ์ และความชำนาญสูง
+                                เพื่อผู้เข้ารับการรักษาได้รับการบริการที่ดีที่สุด
+                            </p>
+                            <span class="badge text-bg-secondary">Boss Hospital</span>
+                            <span class="badge text-bg-secondary">หมอเฉพาะทาง</span>
+                            <span class="badge text-bg-secondary">บริการ</span>
+                        </div>
+                        <div class="card-footer text-muted">
+                            2020
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- Modal 1 -->
+<!-- Modal 1 -->
+<div class="modal fade" id="01Image" tabindex="-1" role="dialog" aria-labelledby="01Image" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="VolunteerCadet">ประวัติการก่อตั้ง</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="img/01.jpg" class="img-fluid" alt="Volunteer cadet">
+                <p class="mt-3">Boss Hospital ก่อตั้งโดยนายสรวิชญ์ เตชะอุดมทรัพย์ ซึ่งปัจจุบันเป็นประธานและผู้อำการของโรงพยาบาล โดยโรงพยาบาลถูกสร้างขึ้นเมื่อวันที่ 4 กันยายน 2020
+                    ปัจจุบันโรงพยาบาลแห่งนี้ มีเครื่องมือแพทย์ที่ทันสมัยมากที่สุด</p> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 2 -->
+<div class="modal fade" id="02Image" tabindex="-1" role="dialog" aria-labelledby="02Image" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="BrilliantSpeechThailand">มูลนิธิ Heal & Care</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="img/02.png" class="img-fluid" alt="Brilliant Speech Thailand">
+                <p class="mt-3">ก่อตั้งโดยนายสรวิชญ์ เตชะอุดมทรัพย์ เมื่อวันที่25 กันยายน 2022 โดยมีวัตถุประสงศ์หลักคือการช่วยเหลือผู้ยากไร้ ที่ไม่สามารถจ่ายค่ารักษาที่สูงจนเกินไป
+                    และยังค่อยช่วยเหลือผู้ที่ประสบภัยต่างๆ </p> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 3 -->
+<div class="modal fade" id="03Image" tabindex="-1" role="dialog" aria-labelledby="03Image" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="CasterFromPillowLive">Boss Hospital</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="img/03.jpg" class="img-fluid" alt="Caster from Pillow Live">
+                <p class="mt-3">โรงพยาบาลที่ดีที่สุดในประเทศไทย มีแผนกรักษาโรคต่างๆมากกว่า20แผนก โดยแต่ละแผนกมีหมอเฉพาะทางที่มากประสบการณ์ และความชำนาญสูง
+                    เพื่อผู้เข้ารับการรักษาได้รับการบริการที่ดีที่สุด</p> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </main>
+
+    <footer class="text-center p-3 bg-light">
+        <p>&copy; 2024 ระบบพยากรณ์โรคในผู้ป่วย</p>
+        <p><a href="privacy_policy.html">นโยบายความเป็นส่วนตัว</a></p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+    <!-- Custom Script -->
+    <script>
+        function toggleSubMenu(menuId) {
+            const submenu = document.getElementById(menuId);
+            submenu.style.display = (submenu.style.display === "none" || submenu.style.display === "") ? "block" : "none";
+        }
+    </script>
+</body>
+
+</html>

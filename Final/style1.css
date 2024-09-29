@@ -1,0 +1,116 @@
+/* styles.css */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* จัดให้อยู่ตรงกลางแนวนอน */
+    justify-content: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+    padding: 20px;
+    text-align: center;
+}
+
+
+/* CSS for Header */
+.bg-navy {
+    background-color: #001f3f; /* สีคราม (navy blue) */
+    color: white;
+    padding-left: 0; /* ลบ padding ซ้ายของ header */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+/* CSS for Logo */
+.logo {
+    height: 100px; /* กำหนดขนาดโลโก้ที่เหมาะสม */
+    width: auto;   /* ปรับขนาดให้คงสัดส่วน */
+    margin-right: 20px; /* ปรับระยะห่างระหว่างโลโก้และข้อความ */
+}
+
+/* ทำให้ container ชิดซ้ายมากที่สุด */
+.d-flex {
+    padding-left: 0;
+}
+
+
+.nav {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-link {
+    color: #333;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: #007bff;
+}
+
+main h2 {
+    color: #007bff;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+footer {
+    background-color: #f8f9fa;
+}
+/* สไตล์สำหรับ Section และ List Group */
+section h2 {
+    margin-left: 0;
+    font-size: 1.5rem;
+}
+
+/* ทำให้ list ชิดขอบซ้าย */
+.list-group {
+    padding-left: 0;
+    margin: 0; /* ลบ margin ที่อาจทำให้แท็บไม่ชิดขอบ */
+}
+
+.list-group-item {
+    border: none; /* เอาเส้นขอบออกเพื่อให้ดูเรียบง่าย */
+    padding: 10px 20px; /* ปรับ padding ให้เหมาะสม */
+    text-align: left; /* จัดข้อความให้ชิดซ้าย */
+}
+
+.list-group-item a {
+    text-decoration: none;
+    color: #007bff; /* สีฟ้าสำหรับลิงก์ */
+}
+
+.list-group-item a:hover {
+    color: #0056b3; /* เปลี่ยนสีเมื่อ hover เพื่อให้เห็นการโต้ตอบ */
+}
+
+/* Flexbox ช่วยจัดการการวางตำแหน่งให้ชิดซ้าย */
+.d-flex.flex-column.align-items-start {
+    width: 100%; /* ขยายให้เต็มความกว้างที่สามารถ */
+    padding-left: 0; /* ลบ padding ซ้าย */
+}
+
+.tab-bg {
+    background-color: #62a9ef; /* สีพื้นหลังของแท็บ */
+    border-radius: 0; /* ลบมุมโค้ง */
+    transition: background-color 0.3s; /* เพิ่มเอฟเฟกต์เปลี่ยนสี */
+}
+
+.tab-bg:hover {
+    background-color: #0a72da; /* สีพื้นหลังเมื่อเมาส์ชี้ */
+}
+.modal-dialog {
+    max-width: 800px; /* กำหนดความกว้าง */
+    width: 100%;
+}

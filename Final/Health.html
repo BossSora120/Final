@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Tips Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f7fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .content {
+            padding: 20px;
+        }
+        .card {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .btn-edit, .btn-delete {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Health Tips Management</h1>
+    <p>Manage your health tips and advice easily.</p>
+</div>
+
+<div class="container content">
+    <!-- Add New Tip Form -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Add or Edit Health Tip</h5>
+            <form id="tipForm">
+                <input type="hidden" id="tipId">
+                <div class="form-group">
+                    <label for="tipTitle">Title</label>
+                    <input type="text" class="form-control" id="tipTitle" placeholder="Enter tip title" required>
+                </div>
+                <div class="form-group">
+                    <label for="tipContent">Content</label>
+                    <textarea class="form-control" id="tipContent" rows="3" placeholder="Enter tip content" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tips List Table -->
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Health Tips List</h5>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tipsList">
+                    <!-- Tips will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Initial sample data for demo purposes
+    let tips = [];
+
+    $(document).ready(function () {
+        // Load existing tips on page load
+        loadTips();
+
+        // Handle form submission for adding or updating tips
+        $('#tipForm').on('submit', function (e) {
+            e.preventDefault();
+            const id = $('#tipId').val();
+            const title = $('#tipTitle').val();
+            const content = $('#tipContent').val();
+
+            if (id) {
+                // Update existing tip
+                tips = tips.map(tip => tip.id === id ? { id, title, content } : tip);
+            } else {
+                // Add new tip
+                const newTip = {
+                    id: Date.now().toString(),
+                    title,
+                    content
+                };
+                tips.push(newTip);
+            }
+
+            // Clear form and refresh the tips list
+            $('#tipForm')[0].reset();
+            $('#tipId').val('');
+            loadTips();
+        });
+    });
+
+    // Function to load tips into the table
+    function loadTips() {
+        $('#tipsList').empty();
+        tips.forEach(tip => {
+            $('#tipsList').append(`
+                <tr>
+                    <td>${tip.title}</td>
+                    <td>${tip.content}</td>
+                    <td>
+                        <button class="btn btn-info btn-edit" onclick="editTip('${tip.id}')">Edit</button>
+                        <button class="btn btn-danger btn-delete" onclick="deleteTip('${tip.id}')">Delete</button>
+                    </td>
+                </tr>
+            `);
+        });
+    }
+
+    // Edit tip function
+    function editTip(id) {
+        const tip = tips.find(t => t.id === id);
+        $('#tipId').val(tip.id);
+        $('#tipTitle').val(tip.title);
+        $('#tipContent').val(tip.content);
+    }
+
+    // Delete tip function
+    function deleteTip(id) {
+        tips = tips.filter(t => t.id !== id);
+        loadTips();
+    }
+</script>
+
+</body>
+</html>
